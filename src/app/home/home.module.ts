@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import { LineGraphComponent } from './line-graph/line-graph.component';
+import { PieGraphComponent } from './pie-graph/pie-graph.component';
 
 @NgModule({
   imports: [
@@ -18,6 +20,6 @@ import { HomePage } from './home.page';
       }
     ])
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, LineGraphComponent, PieGraphComponent]
 })
 export class HomePageModule {}

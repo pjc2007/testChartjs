@@ -6,9 +6,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+<ion-content scroll-y='false'>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <app-line-graph></app-line-graph>
+    </ion-slide>
+    <ion-slide>
+     <app-pie-graph></app-pie-graph>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

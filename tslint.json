@@ -1,4 +1,10 @@
 {
+  "component-selector": [
+    true,
+    "element",
+    "mm",
+    "kebab-case"
+  ],
   "rulesDirectory": [
     "codelyzer"
   ],
