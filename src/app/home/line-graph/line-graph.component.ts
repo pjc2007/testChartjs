@@ -7,9 +7,14 @@ import { Chart }from 'chart.js';
 })
 export class LineGraphComponent implements OnInit {
   @ViewChild('mygraph') private chartRef;
-  chart: any;
+    chart: any;
+    
+    data: any;
   constructor() { }
 
+    updateClick() {
+        this.data.data[0] = { x: '2017-01-07 06:00:00', y: 50 };
+    }
     ngOnInit() {
         var s1 = {
             label: 's1',
@@ -20,7 +25,7 @@ export class LineGraphComponent implements OnInit {
             ]
         };
 
-        var s2 = {
+        this.data = {
             label: 's2',
             borderColor: 'red',
             data: [
@@ -37,7 +42,7 @@ export class LineGraphComponent implements OnInit {
             type: 'line',
             data: {
                
-                 datasets: [s2] ,
+                datasets: [this.data ] ,
             },
             options: {
               responsive:true,
