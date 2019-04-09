@@ -14,6 +14,11 @@ export class LineGraphComponent implements OnInit {
 
     updateClick() {
         this.data.data[0] = { x: '2017-01-07 06:00:00', y: 50 };
+        this.chart.options.scales.xAxes[0].scaleLabel.labelString = "My new string";
+        this.chart.update();
+
+        // Or can update as suggested here
+        // https://www.chartjs.org/docs/latest/developers/updates.html
     }
     ngOnInit() {
         var s1 = {
@@ -26,7 +31,7 @@ export class LineGraphComponent implements OnInit {
         };
 
         this.data = {
-            label: 's2',
+           label: 's2',
             borderColor: 'red',
             data: [
                 { x: '2017-01-07 06:00:00', y: 90 },
@@ -44,13 +49,16 @@ export class LineGraphComponent implements OnInit {
                
                 datasets: [this.data ] ,
             },
-            options: {
+        options: {
+                legend: false,
               responsive:true,
               maintainAspectRatio:false,
                 scales: {
                     xAxes: [{
                         ticks: {
-                            source: 'data'
+                            source: 'data',
+                            maxRotation: 30,
+                            minRotation:30
                         },
                         scaleLabel: { labelString: 'Time', display: true },
                         
