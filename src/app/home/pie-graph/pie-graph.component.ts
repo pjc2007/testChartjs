@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
+//import 'chartjs-plugin-datalabels';
+
 @Component({
   selector: 'app-pie-graph',
   templateUrl: './pie-graph.component.html',
@@ -53,7 +55,9 @@ export class PieGraphComponent implements OnInit {
       maintainAspectRatio: false,
       legend: {
         position: 'bottom',
-        boxWidth:10
+        labels: {
+          boxWidth: 20
+        }
       },
       tooltips: {
         enabled: false

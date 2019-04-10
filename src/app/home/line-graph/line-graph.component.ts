@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Chart }from 'chart.js';
+import { Chart } from 'chart.js';
+
+
 @Component({
   selector: 'app-line-graph',
   templateUrl: './line-graph.component.html',
