@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Chart } from 'chart.js';
+import { Chart, ChartOptions } from 'chart.js';
+import { ChartDataLabels } from 'chartjs-plugin-datalabels';
 //import 'chartjs-plugin-datalabels';
 
 @Component({
@@ -9,10 +10,15 @@ import { Chart } from 'chart.js';
 })
 export class PieGraphComponent implements OnInit {
   @ViewChild('mygraph') private chartRef;
-  chart: any;
+  chart: Chart;
+
+  chartLabels: any;
 
   data: any;
-  constructor() { }
+  constructor() {
+    //this.chartLabels = ChartDataLabels;
+    Chart.plugins.unregister(ChartDataLabels);
+   }
 
   public updateClick(evt) : void {
     try {
@@ -50,7 +56,7 @@ export class PieGraphComponent implements OnInit {
       ]
     };
 
-    let options = {
+    let options : ChartOptions = {
       responsive: true,
       maintainAspectRatio: false,
       legend: {
@@ -68,9 +74,10 @@ export class PieGraphComponent implements OnInit {
             return 'hello';
             let sum = 0;
             let dataArr = ctx.chart.data.datasets[0].data;
-            dataArr.map(data => {
-              sum += data;
-            });
+            // dataArr.map()
+            // dataArr.map((data, i, array) => {
+            //   sum += data;
+            // });
             let percentage = (value * 100 / sum).toFixed(2) + "%";
             return percentage;
 
@@ -81,6 +88,7 @@ export class PieGraphComponent implements OnInit {
       }
     };
     this.chart = new Chart(this.chartRef.nativeElement, { 
+      plugins: [ChartDataLabels],
       type: 'pie',
       data: this.data,
       options: options

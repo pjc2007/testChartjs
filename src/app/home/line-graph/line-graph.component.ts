@@ -42,41 +42,43 @@ export class LineGraphComponent implements OnInit {
                 { x: '2017-01-07 18:00:00', y: NaN },
             ]
         };
+        let options : any = {
+            legend: false,
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        source: 'data',
+                        maxRotation: 30,
+                        minRotation: 30
+                    },
+                    scaleLabel: { labelString: 'Time', display: true },
+
+                    type: 'time',
+                    display: true,
+                    position: 'bottom',
+                    time: {
+                        unit: 'minute',
+                        displayFormats: {
+                            'minute': 'hh:mm a'
+                        }
+                    }
+
+                }]
+            }
+        };
+
     this.chart = new Chart(this.chartRef.nativeElement, {
-        ticks: {
-                source: 'data'
-            },
+        // ticks: {
+        //         source: 'data'
+        //     },
             type: 'line',
             data: {
                
                 datasets: [this.data ] ,
             },
-        options: {
-                legend: false,
-              responsive:true,
-              maintainAspectRatio:false,
-                scales: {
-                    xAxes: [{
-                        ticks: {
-                            source: 'data',
-                            maxRotation: 30,
-                            minRotation:30
-                        },
-                        scaleLabel: { labelString: 'Time', display: true },
-                        
-                        type: 'time',
-                        display: true,
-                        position: 'bottom',
-                        time: {
-                            unit: 'minute',
-                            displayFormats: {
-                                'minute': 'hh:mm a'
-                            }
-                        }
-
-                    }]
-                }
-            }
+        options: options
 
         });
       }
